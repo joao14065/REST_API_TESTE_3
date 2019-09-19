@@ -74,7 +74,7 @@ namespace REST_API_TESTE_3.Repository.Implementation
         // por ser mock retornamos a mesma informação passada
         public Person Update(Person person)
         {
-            if (!Exist(person.Id)) return null;
+            if (!Exist(person.Id ?? default(int))) return null;
 
             var result = _context.Person.SingleOrDefault(p => p.Id == person.Id);
             try

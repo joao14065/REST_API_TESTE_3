@@ -66,7 +66,7 @@ namespace REST_API_TESTE_3.Repository.Generic
 
         public T Update(T item)
         {
-            if (!Exist(item.Id)) return null;
+            if (!Exist(item.Id ?? default(int))) return null;
 
             var result = dataset.SingleOrDefault(p => p.Id == item.Id);
             try

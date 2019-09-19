@@ -1,5 +1,6 @@
 ﻿using REST_API_TESTE_3.Model;
 using REST_API_TESTE_3.Repository;
+using REST_API_TESTE_3.Repository.Generic;
 using System.Collections.Generic;
 
 namespace REST_API_TESTE_3.Business.Implementation
@@ -40,7 +41,7 @@ namespace REST_API_TESTE_3.Business.Implementation
         /// <summary>
         /// Campo para instanciar o repositorio.
         /// </summary>
-        private IPersonRepository _repository;
+        private IRepository<Person> _repository;
 
         /// <summary>
         /// Método que recebe um parâmetro para instanciar o repositorio. 
@@ -49,7 +50,7 @@ namespace REST_API_TESTE_3.Business.Implementation
         /// Uma instância do repositório.
         /// </returns>
         /// <param name="repository">parâmetro de instância.</param>
-        public PersonBusiness(IPersonRepository repository)
+        public PersonBusiness(IRepository<Person> repository)
         {
             _repository = repository;
         }

@@ -6,6 +6,6 @@ namespace REST_API_TESTE_3.Model.Base
     public class BaseEntity
     {
 
-        public long Id { get; set; }
+        public long? Id { get; set; }
     }
 }
