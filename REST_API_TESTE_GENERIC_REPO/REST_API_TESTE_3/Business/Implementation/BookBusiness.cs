@@ -1,5 +1,6 @@
 ﻿using REST_API_TESTE_3.Model;
 using REST_API_TESTE_3.Repository;
+using REST_API_TESTE_3.Repository.Generic;
 using System.Collections.Generic;
 
 namespace REST_API_TESTE_3.Business.Implementation
@@ -33,14 +34,14 @@ namespace REST_API_TESTE_3.Business.Implementation
     /// <remarks>
     /// Aconselha-se a criar um serviço padrão p/ todos os objetos utilizados em soluções futuras.
     /// </remarks>
-    public class BookBusiness : IPersonBusiness
+    public class BookBusiness : IBookBusiness
     {
 
 
         /// <summary>
         /// Campo para instanciar o repositorio.
         /// </summary>
-        private IPersonRepository _repository;
+        private IRepository<Book> _repository;
 
         /// <summary>
         /// Método que recebe um parâmetro para instanciar o repositorio. 
@@ -49,7 +50,7 @@ namespace REST_API_TESTE_3.Business.Implementation
         /// Uma instância do repositório.
         /// </returns>
         /// <param name="repository">parâmetro de instância.</param>
-        public BookBusiness(IPersonRepository repository)
+        public BookBusiness(IRepository<Book> repository)
         {
             _repository = repository;
         }
@@ -59,9 +60,9 @@ namespace REST_API_TESTE_3.Business.Implementation
         /// </summary>
         /// <param name="person">Objeto.</param>
         /// <returns></returns>
-        public Person Create(Person person)
+        public Book Create(Book book)
         {
-            return _repository.Create(person);
+            return _repository.Create(book);
         }
 
         // Método responsável por deletar
@@ -73,7 +74,7 @@ namespace REST_API_TESTE_3.Business.Implementation
 
         // Método responsável por retornar todas as pessoas
         // mais uma vez essas informações são mocks
-        public List<Person> FindAll()
+        public List<Book> FindAll()
         {
             return _repository.FindAll();
         }
@@ -81,16 +82,16 @@ namespace REST_API_TESTE_3.Business.Implementation
         // Método responsável por retornar uma pessoa
         // como não acessamos nenhuma base de dados
         // estamos retornando um mock
-        public Person FindById(long Id)
+        public Book FindById(long Id)
         {
             return _repository.FindById(Id);
         }
 
         // Método responsável por atualizar uma pessoa
         // por ser mock retornamos a mesma informação passada
-        public Person Update(Person person)
+        public Book Update(Book book)
         {
-            return _repository.Update(person);
+            return _repository.Update(book);
         }
     }
 }

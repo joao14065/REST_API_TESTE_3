@@ -12,6 +12,8 @@ namespace REST_API_TESTE_3.Model.Context
         public PostgreSQLContext(DbContextOptions<PostgreSQLContext> options) : base(options) { }
 
         public DbSet<Person> Person { get; set; }
+        public DbSet<Book> Book { get; set; }
+
 
     }
 }

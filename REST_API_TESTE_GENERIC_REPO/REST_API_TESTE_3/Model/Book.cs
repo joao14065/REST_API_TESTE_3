@@ -1,12 +1,12 @@
-﻿using System;
+﻿using REST_API_TESTE_3.Model.Base;
+using System;
 
 namespace REST_API_TESTE_3.Model
 {
-    public class Book
+    public class Book : BaseEntity
     {
-        public long Id { get; set; }
         public string Title { get; set; }
-        public string Authos { get; set; }
+        public string Author { get; set; }
         public decimal Price { get; set; }
         public DateTime LaunchDate { get; set; }
     }

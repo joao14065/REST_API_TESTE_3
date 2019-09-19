@@ -35,10 +35,10 @@ namespace REST_API_TESTE_3.Business
     public interface IBookBusiness
     {
         /// <summary>
-        /// Recebe um objeto <paramref name="person"/> e o cria na tabela.
+        /// Recebe um objeto <paramref name="book"/> e o cria na tabela.
         /// </summary>
-        /// <param name="person">O objeto Person</param>
-        Person Create(Person person);
+        /// <param name="book">O objeto Person</param>
+        Book Create(Book book);
         /// <summary>
         /// Recebe um long <paramref name="Id"/> e envia o objeto referente.
         /// </summary>
@@ -46,19 +46,19 @@ namespace REST_API_TESTE_3.Business
         /// <returns>
         /// O objeto referente.
         /// </returns>
-        Person FindById(long Id);
+        Book FindById(long Id);
         /// <summary>
         /// Envia todos os objetos.
         /// </summary>
         /// <returns>
         /// Todos os objetos da tabela.
         /// </returns>
-        List<Person> FindAll();
+        List<Book> FindAll();
         /// <summary>
-        /// Recebe um objeto modificado <paramref name="person"/> e o atualiza na tabela.
+        /// Recebe um objeto modificado <paramref name="book"/> e o atualiza na tabela.
         /// </summary>
         /// <param name="person">O objeto Person</param>
-        Person Update(Person person);
+        Book Update(Book book);
         /// <summary>
         /// Recebe um long <paramref name="Id"/> e deleta o objeto referente da tabela.
         /// </summary>

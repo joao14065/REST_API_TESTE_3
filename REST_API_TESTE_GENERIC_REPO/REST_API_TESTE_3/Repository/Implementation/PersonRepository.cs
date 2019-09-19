@@ -13,7 +13,7 @@ namespace REST_API_TESTE_3.Repository.Implementation
     {
 
         // Parametro que conecta o código ao banco de dados
-        private PostgreSQLContext _context;
+        private readonly PostgreSQLContext _context;
 
         public PersonRepository(PostgreSQLContext context)
         {

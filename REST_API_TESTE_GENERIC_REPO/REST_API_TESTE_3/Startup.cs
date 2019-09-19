@@ -9,6 +9,7 @@ using REST_API_TESTE_3.Business;
 using REST_API_TESTE_3.Business.Implementation;
 using REST_API_TESTE_3.Model.Context;
 using REST_API_TESTE_3.Repository;
+using REST_API_TESTE_3.Repository.Generic;
 using REST_API_TESTE_3.Repository.Implementation;
 
 namespace REST_API_TESTE_3
@@ -39,7 +40,12 @@ namespace REST_API_TESTE_3
             services.AddApiVersioning();
             // Dependency Injection
             services.AddScoped<IPersonBusiness, PersonBusiness>();
+            services.AddScoped<IBookBusiness, BookBusiness>();
+
             services.AddScoped<IPersonRepository, PersonRepository>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
 
         }
 
