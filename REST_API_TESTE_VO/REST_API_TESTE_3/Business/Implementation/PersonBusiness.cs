@@ -1,4 +1,6 @@
-﻿using REST_API_TESTE_3.Model;
+﻿using REST_API_TESTE_3.Data.Converters;
+using REST_API_TESTE_3.Data.VO;
+using REST_API_TESTE_3.Model;
 using REST_API_TESTE_3.Repository;
 using REST_API_TESTE_3.Repository.Generic;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ namespace REST_API_TESTE_3.Business.Implementation
 {
     /// <summary>
     ///  Classe <c>IPersonBusiness</c>.
-    ///  Realiza as ações CRUD no objeto Person.
+    ///  Realiza as ações CRUD no objeto PersonVO.
     /// <list type="bullet">
     /// <item>
     /// <term>Create</term>
@@ -43,6 +45,8 @@ namespace REST_API_TESTE_3.Business.Implementation
         /// </summary>
         private IRepository<Person> _repository;
 
+        private readonly PersonConverter _converter;
+
         /// <summary>
         /// Método que recebe um parâmetro para instanciar o repositorio. 
         /// </summary>
@@ -53,16 +57,19 @@ namespace REST_API_TESTE_3.Business.Implementation
         public PersonBusiness(IRepository<Person> repository)
         {
             _repository = repository;
+            _converter = new PersonConverter();
         }
 
         /// <summary>
         /// Metodo responsável por criar uma nova pessoa.
         /// </summary>
-        /// <param name="person">Objeto.</param>
+        /// <param name="PersonVO">Objeto.</param>
         /// <returns></returns>
-        public Person Create(Person person)
+        public PersonVO Create(PersonVO Person)
         {
-            return _repository.Create(person);
+            var PersonEntity = _converter.Parse(Person);
+            PersonEntity = _repository.Create(PersonEntity);
+            return _converter.Parse(PersonEntity);
         }
 
         // Método responsável por deletar
@@ -74,24 +81,26 @@ namespace REST_API_TESTE_3.Business.Implementation
 
         // Método responsável por retornar todas as pessoas
         // mais uma vez essas informações são mocks
-        public List<Person> FindAll()
+        public List<PersonVO> FindAll()
         {
-            return _repository.FindAll();
+            return _converter.ParseList(_repository.FindAll());
         }
 
         // Método responsável por retornar uma pessoa
         // como não acessamos nenhuma base de dados
         // estamos retornando um mock
-        public Person FindById(long Id)
+        public PersonVO FindById(long Id)
         {
-            return _repository.FindById(Id);
+            return _converter.Parse(_repository.FindById(Id));
         }
 
         // Método responsável por atualizar uma pessoa
         // por ser mock retornamos a mesma informação passada
-        public Person Update(Person person)
+        public PersonVO Update(PersonVO Person)
         {
-            return _repository.Update(person);
+            var PersonEntity = _converter.Parse(Person);
+            PersonEntity = _repository.Update(PersonEntity);
+            return _converter.Parse(PersonEntity);
         }
     }
 }

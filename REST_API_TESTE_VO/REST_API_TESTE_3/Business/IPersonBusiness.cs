@@ -1,4 +1,5 @@
-﻿using REST_API_TESTE_3.Model;
+﻿using REST_API_TESTE_3.Data.VO;
+using REST_API_TESTE_3.Model;
 using System.Collections.Generic;
 
 namespace REST_API_TESTE_3.Business
@@ -35,10 +36,10 @@ namespace REST_API_TESTE_3.Business
     public interface IPersonBusiness
     {
         /// <summary>
-        /// Recebe um objeto <paramref name="person"/> e o cria na tabela.
+        /// Recebe um objeto <paramref name="PersonVO"/> e o cria na tabela.
         /// </summary>
-        /// <param name="person">O objeto Person</param>
-        Person Create(Person person);
+        /// <param name="PersonVO">O objeto PersonVO</param>
+        PersonVO Create(PersonVO PersonVO);
         /// <summary>
         /// Recebe um long <paramref name="Id"/> e envia o objeto referente.
         /// </summary>
@@ -46,19 +47,19 @@ namespace REST_API_TESTE_3.Business
         /// <returns>
         /// O objeto referente.
         /// </returns>
-        Person FindById(long Id);
+        PersonVO FindById(long Id);
         /// <summary>
         /// Envia todos os objetos.
         /// </summary>
         /// <returns>
         /// Todos os objetos da tabela.
         /// </returns>
-        List<Person> FindAll();
+        List<PersonVO> FindAll();
         /// <summary>
-        /// Recebe um objeto modificado <paramref name="person"/> e o atualiza na tabela.
+        /// Recebe um objeto modificado <paramref name="PersonVO"/> e o atualiza na tabela.
         /// </summary>
-        /// <param name="person">O objeto Person</param>
-        Person Update(Person person);
+        /// <param name="PersonVO">O objeto PersonVO</param>
+        PersonVO Update(PersonVO PersonVO);
         /// <summary>
         /// Recebe um long <paramref name="Id"/> e deleta o objeto referente da tabela.
         /// </summary>
